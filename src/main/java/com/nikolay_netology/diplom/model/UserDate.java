@@ -16,10 +16,11 @@ import java.util.Collection;
 @Entity
 @Table(name = "usersData")
 public class UserDate implements UserDetails {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
+    @Id
     @Column(nullable = false)
 //    @Size(min = 2, message = "Не меньше 2 знаков")
     private String login;

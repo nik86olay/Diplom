@@ -22,7 +22,7 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping("/login")
-    public ResponseAuth login(@RequestBody @Valid RequestAuth requestAuth, BindingResult bindingResult) {
+    public ResponseAuth login(@RequestBody @Valid RequestAuth requestAuth, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
             List<FieldError> errors = bindingResult.getFieldErrors();
