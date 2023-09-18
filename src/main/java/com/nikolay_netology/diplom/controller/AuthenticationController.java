@@ -3,8 +3,8 @@ package com.nikolay_netology.diplom.controller;
 import com.nikolay_netology.diplom.services.AuthenticationService;
 import com.nikolay_netology.diplom.util.UserErrorResponse;
 import com.nikolay_netology.diplom.util.UserNotCreatedException;
-import com.nikolay_netology.diplom.util.request.RequestAuth;
-import com.nikolay_netology.diplom.util.response.ResponseAuth;
+import com.nikolay_netology.diplom.util.request.AuthRequest;
+import com.nikolay_netology.diplom.util.response.AuthResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping("/login")
-    public ResponseAuth login(@RequestBody @Valid RequestAuth requestAuth, BindingResult bindingResult) throws Exception {
+    public AuthResponse login(@RequestBody @Valid AuthRequest authRequest, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
             List<FieldError> errors = bindingResult.getFieldErrors();
@@ -32,7 +32,7 @@ public class AuthenticationController {
             }
             throw new UserNotCreatedException(errorMsg.toString());
         }
-        return authenticationService.login(requestAuth);
+        return authenticationService.login(authRequest);
     }
 
     @PostMapping("/logout")

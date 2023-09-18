@@ -1,14 +1,16 @@
 package com.nikolay_netology.diplom.util.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-@Data
+//@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
-public class RequestAuth {
+public class AuthRequest {
     @NotEmpty(message = "login must not be null")
     @Email
     private String login;

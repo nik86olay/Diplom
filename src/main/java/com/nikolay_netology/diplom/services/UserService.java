@@ -1,6 +1,6 @@
 package com.nikolay_netology.diplom.services;
 
-import com.nikolay_netology.diplom.model.UserDate;
+import com.nikolay_netology.diplom.model.UserData;
 import com.nikolay_netology.diplom.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +15,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        UserDate user = userRepository.findByLogin(login);
+        UserData user = userRepository.findByLogin(login);
 
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User %s not found", login));
