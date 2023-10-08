@@ -7,26 +7,31 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "USERSDATA")
+@Table(name = "users_data")
 public class UserData implements UserDetails {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
 
     @Id
-    @Column(nullable = false)
-//    @Size(min = 2, message = "Не меньше 2 знаков")
+    @Column(nullable = false, unique = true)
+    @NotBlank
+    @Size(min = 2, max = 50, message = "Не меньше 2 знаков и не более 50")
     private String login;
 
     @Column(nullable = false)
-//    @Size(min = 5, message = "Не меньше 5 знаков")
+    @NotBlank
+    @Size(min = 5, max = 50, message = "Не меньше 2 знаков и не более 50")
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<FileData> userFiles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
