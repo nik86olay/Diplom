@@ -61,7 +61,7 @@ public class FileService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error input data");
         }
         log.info("Success download file. User {}", user.getUsername());
-        return file.getFileContent();
+        return file.getFileСontent();
     }
 
     @Transactional

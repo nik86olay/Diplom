@@ -24,8 +24,8 @@ public class FileData {
     private Long size;
 
     @Lob
-    @Column(nullable = false, columnDefinition="BLOB")
-    private byte[] fileContent;
+    @Column(nullable = false)
+    private byte[] fileСontent;
 
     @ManyToOne
     private UserData user;

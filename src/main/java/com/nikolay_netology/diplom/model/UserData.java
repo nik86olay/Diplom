@@ -1,6 +1,7 @@
 package com.nikolay_netology.diplom.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,8 +18,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "users_data")
-public class UserData implements UserDetails {
+public class UserData implements UserDetails, Serializable {
 
     @Id
     @Column(nullable = false, unique = true)
@@ -27,7 +30,7 @@ public class UserData implements UserDetails {
 
     @Column(nullable = false)
     @NotBlank
-    @Size(min = 5, max = 50, message = "Не меньше 2 знаков и не более 50")
+    @Size(min = 5, max = 255, message = "Не меньше 2 знаков и не более 50")
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL)

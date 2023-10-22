@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+
+  server:
+    image: backend
+    container_name: 'back-server'
+    build: ./
+    ports:
+      - "9090:9090"
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/Users
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: NikonD60!
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+
+  database:
+    image: postgres:16.0
+    container_name: 'diplom-db'
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: NikonD60!
+#      POSTGRES_ROOT_PASSWORD: Password
+      POSTGRES_DATABASE: Users
+    ports:
+      - "5432:5432"
