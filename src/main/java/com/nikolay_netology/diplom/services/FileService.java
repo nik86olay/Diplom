@@ -86,7 +86,7 @@ public class FileService {
                 .collect(Collectors.toList());
     }
 
-    private UserData getUserByAuthToken(String authToken) {
+    public UserData getUserByAuthToken(String authToken) {
         UserData user = null;
         if (authToken.startsWith("Bearer ")) {
             final String authTokenWithoutBearer = authToken.split(" ")[1];
