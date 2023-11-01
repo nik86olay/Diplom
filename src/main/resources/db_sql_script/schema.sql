@@ -1,13 +1,13 @@
-create schema Dat;
+create schema Data;
 
-create table Dat.users_data
+create table Data.users_data
 (
     login    varchar(255) not null,
     password varchar(255) not null,
     primary key (login)
 );
 
-create table Dat.files_data
+create table Data.files_data
 (
     filename      varchar(255)   not null,
     date          TIMESTAMPTZ(6) not null,

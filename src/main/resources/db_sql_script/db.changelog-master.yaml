@@ -1,7 +1,0 @@
-#databaseChangeLog:
-#  - include:
-#      file: /db_sql_script/schema.sql
-#      relativeToChangeLogFile: true
-#  - include:
-#      file: /db_sql_script/data.sql
-#      relativeToChangeLogFile: true
